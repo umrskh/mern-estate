@@ -23,6 +23,7 @@ app.use('/api/auth', authRouter);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
+  console.error(err);
   const errorMessage = err.message || 'Something went wrong!';
   return res.status(errorStatus).json({
     success: false,

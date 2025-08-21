@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 import { useState } from 'react';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -34,6 +35,7 @@ export default function SignUp() {
       }
 
       console.log('Signup success:', data);
+      navigate('/sign-in'); // Redirect to sign-in page after successful signup
 
     } catch (err) {
       setError(err.message);
